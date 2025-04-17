@@ -7087,6 +7087,19 @@ CREATE INDEX `idx_expire_at` ON `instance_list` (`expire_at`);
 )",
 		.content_schema_update = false
 	},
+	ManifestEntry{
+		.version = 9322,
+		.description = "2025_04_16_character_data_first_login.sql",
+		.check = "SHOW COLUMNS FROM `character_data` LIKE 'first_login'",
+		.condition = "empty",
+		.match = "",
+		.sql = R"(
+ALTER TABLE `character_data`
+CHANGE COLUMN `firstlogon` `ingame` tinyint(1) UNSIGNED NOT NULL DEFAULT 0 AFTER `xtargets`,
+ADD COLUMN `first_login` int(11) UNSIGNED NOT NULL DEFAULT 0 AFTER `xtargets`;
+)",
+		.content_schema_update = false
+	},
 // -- template; copy/paste this when you need to create a new entry
 //	ManifestEntry{
 //		.version = 9228,
