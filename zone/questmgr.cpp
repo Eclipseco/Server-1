@@ -1354,7 +1354,6 @@ void QuestManager::permaclass(int class_id) {
 
 	initiator->SetBaseClass(class_id);
 	initiator->Save(2);
-	#initiator->Kick("Base class change by QuestManager");
 }
 
 void QuestManager::permarace(int race_id) {
